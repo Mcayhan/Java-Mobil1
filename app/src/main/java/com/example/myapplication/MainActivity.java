@@ -8,7 +8,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-// java mobil
+// java mobil gorev1
 
 public class MainActivity extends AppCompatActivity {
 
