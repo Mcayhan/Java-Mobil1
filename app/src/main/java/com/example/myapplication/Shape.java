@@ -1,15 +1,13 @@
 package com.example.myapplication;
 
-public class Shape {
+public abstract class Shape {
     private String name;
 
     public Shape(String name) {
         this.name = name;
     }
 
-    public double area(){
-        return 0.0;
-    }
+    public abstract double area();
 
     public String getName() {
         return name;

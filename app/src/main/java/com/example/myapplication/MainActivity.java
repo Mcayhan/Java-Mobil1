@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
         Shape myRect = new Rectangle("Rect1", 20,10);
         Shape myTri = new Triangle("Tri1", 4,5);
 
-        System.out.println("Name: "+ myCircle.getName()+ " Area: " + myCircle.area());
-        System.out.println("Name: "+ myRect.getName()+ " Area: " + myRect.area());
-        System.out.println("Name: "+ myTri.getName()+ " Area: " + myTri.area());
+        System.out.println(myCircle);
+        System.out.println(myRect);
+        System.out.println(myTri);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
