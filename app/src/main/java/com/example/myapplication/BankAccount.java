@@ -1,39 +1,39 @@
 package com.example.myapplication;
 
 public class BankAccount {
-    private int bakiye;
+    private int balance;
 
-    public BankAccount(int bakiye) {
-        this.bakiye = bakiye;
+    public BankAccount(int balance) {
+        this.balance = balance;
     }
 
-    public void paraYatir(int x){
-        if (x>0){
-            bakiye+=x;
-            System.out.println(x + " TL hesabınıza yatırıldı. Güncel bakiye: "+ bakiye);
+    public void deposit(int amount){
+        if (amount >0){
+            balance += amount;
+            System.out.println(amount + " TL has been deposited to your account. Current balance: "+ balance);
         }else{
-            System.out.println("Geçersiz miktar girdiniz!");
+            System.out.println("Invalid amount!");
         }
     }
 
-    public void paraCek(int y){
-        if (y<=0){
-            System.out.println("Geçersiz miktar girdiniz!");
-        }else if(y>bakiye){
-            System.out.println("Yetersiz bakiye! Hesabınızda " + bakiye + " TL var");
+    public void withdraw(int amount){
+        if (amount <=0){
+            System.out.println("Invalid amount!");
+        }else if(amount > balance){
+            System.out.println("Not enough balance! You have " + balance + " TL in your account.");
         }else{
-            bakiye -= y; //bakiyeden parayı düştük
-            System.out.println(y + " TL hesabınızdan çekildi. Güncel bakiye: " + bakiye);
+            balance -= amount; //bakiyeden parayı düştük
+            System.out.println(amount + " TL was withdrew from your account. Current balance: " + balance);
 
         }
     }
 
-    public int getBakiye() {
-        return bakiye;
+    public int getBalance() {
+        return balance;
     }
 
-    public void setBakiye(int bakiye) {
-        this.bakiye = bakiye;
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 
 }

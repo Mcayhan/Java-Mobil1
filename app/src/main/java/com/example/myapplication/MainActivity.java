@@ -16,9 +16,9 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         BankAccount account1 = new BankAccount(500);
-        account1.paraYatir(400);
-        account1.paraCek(300);
-        account1.paraCek(700);
+        account1.deposit(400);
+        account1.withdraw(300);
+        account1.withdraw(700);
         System.out.println("Hello World");
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
