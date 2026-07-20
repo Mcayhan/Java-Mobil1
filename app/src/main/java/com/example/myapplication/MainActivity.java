@@ -16,6 +16,20 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         System.out.println("Hello World");
+
+        Repository<String> stringRepo = new Repository<>();
+
+        stringRepo.add("Java");
+        stringRepo.add("Android");
+
+        try {
+            String item = stringRepo.get(0);
+            System.out.println("Found: " + item);
+            stringRepo.delete(5);
+        } catch (RecordNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
