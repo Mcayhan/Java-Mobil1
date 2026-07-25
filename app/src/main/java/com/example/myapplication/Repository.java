@@ -10,19 +10,18 @@ public class Repository <T>{
         System.out.println("Item added.");
     }
 
-    public T get(int index) throws RecordNotFoundException{
-        if (index<0 || index >= items.size()){
+    public T get(int index) {
+        if (index < 0 || index >= items.size()){
             throw new RecordNotFoundException("Item not found at index: " + index);
         }
         return items.get(index);
     }
 
-    public void delete(int index) throws RecordNotFoundException{
-        if(index<0 || index>= items.size()){
-            throw new RecordNotFoundException("Cannot delete. Item not found at index." + index);
+    public void delete(int index) {
+        if(index < 0 || index >= items.size()){
+            throw new RecordNotFoundException("Cannot delete. Item not found at index: " + index);
         }
         items.remove(index);
         System.out.println("Item deleted.");
     }
-
 }
