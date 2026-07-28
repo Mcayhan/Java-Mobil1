@@ -21,6 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".DetailActivity"
+            android:exported="false"
+            android:label="@string/title_activity_detail"
+            android:theme="@style/Theme.MyApplication"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

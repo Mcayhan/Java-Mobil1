@@ -3,7 +3,6 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,42 +10,28 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class DetailActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
-
+    private static final String TAG = "DetailActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_detail);
 
-        Log.d(TAG, "onCreate: Screen created");
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("INTERN_DATA")) {
+            String data = intent.getStringExtra("INTERN_DATA");
+            Log.d(TAG, "Data received: " + data);
+        }
 
-        findViewById(android.R.id.content).setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-            intent.putExtra("INTERN_DATA", "Phase 2 - Day 10 completed!");
-            startActivity(intent);
-        });
-
+        findViewById(android.R.id.content).setOnClickListener(view -> finish());
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.d(TAG, "onStart: Screen is visible");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop: Screen is hidden in background");
     }
 }
