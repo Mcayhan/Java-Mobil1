@@ -3,11 +3,10 @@ package com.example.myapplication;
 import java.util.*;
 
 public class Inventory {
-    // Ürünleri Map içinde saklıyoruz (Key: ID, Value: Product)
-    private Map<Integer, Product> productMap;
+    private Map<String, Product> productMap;
 
     public Inventory() {
-        productMap = new HashMap<>();
+        this.productMap = new HashMap<>();
     }
 
     public void addProduct(Product product) {
@@ -15,32 +14,22 @@ public class Inventory {
         System.out.println("Added: " + product.getName());
     }
 
-    public void removeProduct(int id) {
-        if (productMap.containsKey(id)) {
-            Product removed = productMap.remove(id);
+    public void removeProduct(String productId) {
+        if (productMap.containsKey(productId)) {
+            Product removed = productMap.remove(productId);
             System.out.println("Removed: " + removed.getName());
         } else {
-            System.out.println("Product not found!");
+            System.out.println("Error: Product with ID " + productId + " not found.");
         }
     }
 
-    public Product searchProduct(int id) {
-        return productMap.get(id);
+    public Product searchProduct(String productId) {
+        return productMap.get(productId);
     }
 
-    // Map içindeki verileri ArrayList'e çevirip fiyata göre sıralıyoruz
     public List<Product> getProductsSortedByPrice() {
         List<Product> productList = new ArrayList<>(productMap.values());
-        Collections.sort(productList);
+        productList.sort(Comparator.comparingDouble(Product::getPrice));
         return productList;
-    }
-
-    // Iterator kullanımını gösteren metot
-    public void printAll() {
-        System.out.println("--- All Products ---");
-        Iterator<Product> iterator = productMap.values().iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
-        }
     }
 }
