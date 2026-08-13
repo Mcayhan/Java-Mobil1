@@ -1,0 +1,9 @@
+com.example.datehelper-pngs-0 D:\MyApplicationProjects\MyApplication\datehelper\build\generated\res\pngs\debug
+com.example.datehelper-updated_navigation_xml-1 D:\MyApplicationProjects\MyApplication\datehelper\build\generated\updated_navigation_xml\debug
+com.example.datehelper-mergeDebugResources-2 D:\MyApplicationProjects\MyApplication\datehelper\build\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.example.datehelper-mergeDebugResources-3 D:\MyApplicationProjects\MyApplication\datehelper\build\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.example.datehelper-debug-4 D:\MyApplicationProjects\MyApplication\datehelper\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.datehelper-debug-5 D:\MyApplicationProjects\MyApplication\datehelper\build\intermediates\packaged_res\debug\packageDebugResources
+com.example.datehelper-debug-6 D:\MyApplicationProjects\MyApplication\datehelper\src\debug\res
+com.example.datehelper-main-7 D:\MyApplicationProjects\MyApplication\datehelper\src\main\res
+gradleHome-0 C:\Users\mcayh\.gradle
