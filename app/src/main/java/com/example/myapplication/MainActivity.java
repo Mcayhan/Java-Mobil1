@@ -1,7 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
-
+import android.util.Log;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -15,11 +15,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        System.out.println("Hello World");
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+
+            try {
+                RsaEncryption.run();
+                PasswordHashing.run();
+            } catch (Exception e) {
+                Log.e("MainActivityLog", "Day 21 mission failed", e);
+            }
     }
 }
