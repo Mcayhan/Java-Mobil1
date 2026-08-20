@@ -1,25 +1,48 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import java.io.IOException;
+import java.util.concurrent.Executors;
+
+import javax.net.ssl.SSLPeerUnverifiedException;
+
+import okhttp3.Call;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = "MainActivityLog";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        System.out.println("Hello World");
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        Button testButton = findViewById(R.id.testPinButton);
+        testButton.setOnClickListener(view -> testPinning());
+    }
+
+    private void testPinning() {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            Request request = new Request.Builder()
+                    .url("https://jsonplaceholder.typicode.com/posts/1")
+                    .build();
+
+            Call call = ApiClient.createClient().callFactory().newCall(request);
+
+            try (Response response = call.execute()) {
+                Log.i(TAG, "Request succeeded. Certificate pin matched. Code: " + response.code());
+            } catch (SSLPeerUnverifiedException e) {
+                Log.e(TAG, "Pin validation failed - certificate did not match", e);
+            } catch (IOException e) {
+                Log.e(TAG, "Network error", e);
+            }
         });
     }
 }
